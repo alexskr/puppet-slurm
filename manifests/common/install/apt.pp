@@ -6,25 +6,21 @@ class slurm::common::install::apt {
   }
 
   if $slurm::slurmd or $slurm::slurmctld or $slurm::client {
-    package { 'libslurm-dev': }
-    package { 'libslurm-perl': }
-    package { 'libpmi0': }
-    package { 'libpmi2-0': }
-    package { 'slurm-client': }
+    package { $slurm::base_install_packages: }
   }
 
   if $slurm::slurmd {
-    package { 'slurmd': }
+    package { $slurm::slurmd_install_packages: }
   }
 
   if $slurm::slurmctld {
-    package { 'slurmctld': }
+    package { $slurm::slurmctld_install_packages: }
   }
 
   if $slurm::slurmdbd {
-    package { 'slurmdbd': }
+    package { $slurm::slurmdbd_install_packages: }
   }
 
-  if $slurm::install_pam { package { 'libpam-slurm': } }
-  if $slurm::install_torque_wrapper { package { 'slurm-wlm-torque': } }
+  if $slurm::install_pam { package { $slurm::pam_install_packages: } }
+  if $slurm::install_torque_wrapper { package { $slurm::torque_install_packages: } }
 }

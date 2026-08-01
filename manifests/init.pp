@@ -16,6 +16,12 @@
 # @param package_ensure
 # @param install_torque_wrapper
 # @param install_pam
+# @param base_install_packages
+# @param slurmd_install_packages
+# @param slurmctld_install_packages
+# @param slurmdbd_install_packages
+# @param pam_install_packages
+# @param torque_install_packages
 # @param version
 # @param source_dependencies
 # @param configure_flags
@@ -218,6 +224,12 @@ class slurm (
   String $package_ensure          = 'present',
   Boolean $install_torque_wrapper = false,
   Boolean $install_pam            = true,
+  Array[String[1]] $base_install_packages      = [],
+  Array[String[1]] $slurmd_install_packages    = [],
+  Array[String[1]] $slurmctld_install_packages = [],
+  Array[String[1]] $slurmdbd_install_packages  = [],
+  Array[String[1]] $pam_install_packages       = [],
+  Array[String[1]] $torque_install_packages    = [],
 
   # Source install
   String $version = '25.11.2',

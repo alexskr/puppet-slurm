@@ -26,3 +26,20 @@ slurm::source_dependencies:
 slurm::env_dir: /etc/default
 slurm::slurmrestd_user_group: nogroup
 slurm::slurm_user_shell: /usr/sbin/nologin
+slurm::base_install_packages:
+  - slurm-smd
+  - slurm-smd-client
+  - slurm-smd-dev
+  - slurm-smd-libslurm-perl
+  - slurm-smd-libpmi0
+  - slurm-smd-libpmi2-0
+slurm::slurmd_install_packages:
+  - slurm-smd-slurmd
+slurm::slurmctld_install_packages:
+  - slurm-smd-slurmctld
+slurm::slurmdbd_install_packages:
+  - slurm-smd-slurmdbd
+slurm::pam_install_packages:
+  - slurm-smd-libpam-slurm-adopt
+slurm::torque_install_packages:
+  - slurm-smd-torque

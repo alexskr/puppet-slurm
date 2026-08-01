@@ -123,6 +123,42 @@ slurm::nodes:
     real_memory: 7000
 ```
 
+### Package names
+
+On Debian/Ubuntu the default package names are the `slurm-smd-*` packages produced by the
+`debian/` build in the official SLURM source, matching the way the RedHat packages named
+`slurm-*` are produced by the bundled `slurm.spec`. In both cases the module assumes your
+site builds SLURM from the official source and serves the result from its own repository,
+set via `slurm::repo_baseurl`.
+
+The packages shipped by Debian and Ubuntu themselves are named differently (`slurm-client`,
+`slurmd`, ...) and are older than the versions this module supports, for example SLURM
+23.11.4 on Ubuntu 24.04 and 24.11.5 on Debian 13. If you want to use them anyway, override
+the package names:
+
+```yaml
+slurm::base_install_packages:
+  - libslurm-dev
+  - libslurm-perl
+  - libpmi0
+  - libpmi2-0
+  - slurm-client
+slurm::slurmd_install_packages:
+  - slurmd
+slurm::slurmctld_install_packages:
+  - slurmctld
+slurm::slurmdbd_install_packages:
+  - slurmdbd
+slurm::pam_install_packages:
+  - libpam-slurm
+slurm::torque_install_packages:
+  - slurm-wlm-torque
+```
+
+On Ubuntu 24.04 and newer and Debian 13 and newer, the distribution renamed `libpmi0` and
+`libpmi2-0` to `libpmi0t64` and `libpmi2-0t64` as part of the 64-bit `time_t` transition,
+so use those names instead on those releases.
+
 ### Roles
 
 The behavior of this module is determined by 5 booleans that set the role for a host.
@@ -261,5 +297,6 @@ This module has been tested on:
 * RedHat/Rocky/AlmaLinux 9 x86_64
 * Debian 11 x86_64
 * Debian 12 x86_64
+* Debian 13 x86_64
 * Ubuntu 22.04 x86_64
 * Ubuntu 24.04 x86_64

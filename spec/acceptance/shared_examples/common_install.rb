@@ -4,15 +4,16 @@ def packages
   if fact('os.family') == 'Debian'
     {
       common: [
-        'libslurm-dev',
-        'libslurm-perl',
-        'libpmi0',
-        'libpmi2-0',
-        'slurm-client',
+        'slurm-smd',
+        'slurm-smd-client',
+        'slurm-smd-dev',
+        'slurm-smd-libslurm-perl',
+        'slurm-smd-libpmi0',
+        'slurm-smd-libpmi2-0',
       ],
-      slurmd: 'slurmd',
-      slurmctld: 'slurmctld',
-      slurmdbd: 'slurmdbd',
+      slurmd: 'slurm-smd-slurmd',
+      slurmctld: 'slurm-smd-slurmctld',
+      slurmdbd: 'slurm-smd-slurmdbd',
       slurmrestd: nil,
     }
   else

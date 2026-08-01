@@ -9,11 +9,12 @@ Dir["#{dir}/shared_examples/*.rb"].sort.each { |f| require f }
 def base_packages(facts)
   if facts[:os]['family'] == 'Debian'
     [
-      'libslurm-dev',
-      'libslurm-perl',
-      'libpmi0',
-      'libpmi2-0',
-      'slurm-client',
+      'slurm-smd',
+      'slurm-smd-client',
+      'slurm-smd-dev',
+      'slurm-smd-libslurm-perl',
+      'slurm-smd-libpmi0',
+      'slurm-smd-libpmi2-0',
     ]
   else
     [
