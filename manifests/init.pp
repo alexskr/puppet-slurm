@@ -81,6 +81,7 @@
 # @param slurmdbd_host
 # @param conf_dir
 # @param log_dir
+# @param plugin_dir
 # @param env_dir
 # @param spank_plugins
 # @param enable_configless
@@ -312,6 +313,7 @@ class slurm (
   Stdlib::Absolutepath $conf_dir = '/etc/slurm',
   Stdlib::Absolutepath $log_dir  = '/var/log/slurm',
   Stdlib::Absolutepath $env_dir  = '/etc/sysconfig',
+  Optional[Stdlib::Absolutepath] $plugin_dir = undef,
 
   # configless
   Boolean $enable_configless     = false,
@@ -573,6 +575,7 @@ class slurm (
     'HealthCheckProgram' => $_health_check_program,
     # Must remained undefined to support configless, we save to same directory as slurm.conf
     'PlugStackConfig' => undef,
+    'PluginDir' => $plugin_dir,
     'Prolog' => $prolog,
     'PrologSlurmctld' => undef, #TODO
     'ResvEpilog' => undef, #TODO
@@ -605,6 +608,7 @@ class slurm (
     'DbdHost' => $slurmdbd_host,
     'DbdPort' => $slurmdbd_port,
     'LogFile' => $_slurmdbd_log_file,
+    'PluginDir' => $plugin_dir,
     'SlurmUser' => $slurm_user,
     'StorageHost' => $slurmdbd_storage_host,
     'StorageLoc' => $slurmdbd_storage_loc,

@@ -64,7 +64,7 @@ shared_examples_for 'slurm::common::config' do
                                      'MessageTimeout=10',
                                      'MinJobAge=300',
                                      'OverTimeLimit=0',
-                                     'PluginDir=/usr/lib64/slurm',
+                                     *(facts[:os]['family'] == 'RedHat' ? ['PluginDir=/usr/lib64/slurm'] : []),
                                      'PreemptMode=OFF',
                                      'PriorityCalcPeriod=5',
                                      'PriorityDecayHalfLife=7-0',

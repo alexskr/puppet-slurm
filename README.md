@@ -159,6 +159,14 @@ On Ubuntu 24.04 and newer and Debian 13 and newer, the distribution renamed `lib
 `libpmi2-0` to `libpmi0t64` and `libpmi2-0t64` as part of the 64-bit `time_t` transition,
 so use those names instead on those releases.
 
+### PluginDir
+
+`PluginDir` is set to `/usr/lib64/slurm` on RedHat. On Debian and Ubuntu it is left out of
+`slurm.conf` and `slurmdbd.conf` so that SLURM uses the plugin directory it was built with,
+which is the multiarch path such as `/usr/lib/x86_64-linux-gnu/slurm` and varies by
+architecture and by which packages are installed. Set `slurm::plugin_dir` to write an
+explicit value.
+
 ### Roles
 
 The behavior of this module is determined by 5 booleans that set the role for a host.

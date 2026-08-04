@@ -109,7 +109,6 @@ class slurm::params {
     # 25.11 only
     'NamespaceType' => undef,
     'OverTimeLimit' => '0',
-    'PluginDir' => '/usr/lib64/slurm',
     'PreemptMode' => 'OFF',
     'PreemptParameters' => undef,
     'PreemptType' => undef,
@@ -235,7 +234,6 @@ class slurm::params {
     'MessageTimeout' => '10',
     'Parameters' => undef,
     'PidFile' => '/var/run/slurmdbd.pid',
-    'PluginDir' => '/usr/lib64/slurm',
     'PrivateData' => undef,
     'PurgeEventAfter' => undef,
     'PurgeJobAfter' => undef,

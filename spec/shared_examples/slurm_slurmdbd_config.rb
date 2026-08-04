@@ -33,7 +33,7 @@ shared_examples_for 'slurm::slurmdbd::config' do
                                  'MaxQueryTimeRange=INFINITE',
                                  'MessageTimeout=10',
                                  'PidFile=/var/run/slurmdbd.pid',
-                                 'PluginDir=/usr/lib64/slurm',
+                                 *(facts[:os]['family'] == 'RedHat' ? ['PluginDir=/usr/lib64/slurm'] : []),
                                  'SlurmUser=slurm',
                                  'StorageHost=localhost',
                                  'StorageLoc=slurm_acct_db',

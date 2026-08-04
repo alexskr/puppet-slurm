@@ -1,2 +1,3 @@
 ---
 slurm::env_dir: /etc/sysconfig
+slurm::plugin_dir: /usr/lib64/slurm
